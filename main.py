@@ -34,11 +34,11 @@ def pass_lab(message):
 def process_pass_lab_step(message):
     if not lab_repository.is_lab_exist(message.text):
         bot.send_message(message.chat.id, "Лабороторная работа не существует")
-        bot.register_next_step_handler(message, process_pass_lab_step)
+        bot.register_next_step_handler(message, pass_lab)
         return
     if lab_repository.is_user_finished_lab(message.from_user.id, message.text):
         bot.send_message(message.chat.id, "Вы уже проходили эту работу")
-        bot.register_next_step_handler(message, process_pass_lab_step)
+        bot.register_next_step_handler(message, pass_lab)
     else:
         lab_repository.create_new_lab_for_user(message.from_user.id, message.text)
         current_question_id = progress_repository.get_current_question(message.from_user.id)[0]
