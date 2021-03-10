@@ -13,10 +13,7 @@ import api
 import util
 from telebot import types
 
-# TODO error handler
-# TODO resize spreadsheet
-
-bot = telebot.TeleBot("1530147988:AAFrwGIZfNEC7s9IG2kC9hBrM7rltRWqs6Y")
+bot = telebot.TeleBot("TOKEN")
 spreadsheetApi = api.init_google_spreadsheet_api()
 driveApi = api.init_google_drive_api()
 db = db.init_database_connection()
